@@ -1,0 +1,15 @@
+{
+  "name": "illinois-state-roleplay-portal",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Illinois State Roleplay staff portal",
+  "scripts": { "start": "node server.js", "bot": "node bot.js", "start:all": "node start-all.js" },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "discord.js": "^14.22.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  }
+}

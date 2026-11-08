@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: illinois-state-roleplay
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run start:all
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /tmp/illinois-state-roleplay
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: DISCORD_GUILD_ID
+        sync: false
+      - key: DISCORD_STAFF_ROLE_IDS
+        sync: false
+      - key: DISCORD_ADMIN_ROLE_IDS
+        sync: false
+      - key: DISCORD_OWNER_ROLE_IDS
+        sync: false
+      - key: DISCORD_COMMAND_ROLE_IDS
+        sync: false
+      - key: DISCORD_ASSIGNABLE_ROLE_IDS
+        sync: false
+      - key: ERLC_SERVER_KEY
+        sync: false
+      - key: ROBLOX_CLIENT_ID
+        sync: false
+      - key: ROBLOX_CLIENT_SECRET
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-6-luna
