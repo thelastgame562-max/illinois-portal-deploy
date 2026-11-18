@@ -13,12 +13,15 @@ const children = ['server.js', 'bot.js'].map(file => {
   });
   child.on('error', error => {
     console.error(`Could not start ${file}:`, error.message);
-    shutdown(1);
+    if (file === 'server.js') shutdown(1);
   });
   child.on('exit', code => {
-    if (!stopping) {
+    if (stopping) return;
+    if (file === 'server.js') {
       console.error(`${file} exited (${code ?? 'signal'}); stopping the combined service.`);
       shutdown(code || 1);
+    } else if (code !== 0) {
+      console.error(`${file} exited (${code ?? 'signal'}); the web server will continue running.`);
     }
   });
   return child;
